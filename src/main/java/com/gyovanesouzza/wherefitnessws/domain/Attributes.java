@@ -9,48 +9,71 @@ public class Attributes implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @OneToOne(mappedBy = "attributes")
     private Food food;
-    @OneToOne
+
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Humidity humidity;
-    @OneToOne
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Protein protein;
-    @OneToOne
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Lipid lipid;
-    @OneToOne
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Cholesterol cholesterol;
-    @OneToOne
-    private  Carbohydrate carbohydrate;
-    @OneToOne
-    private   Fiber fiber;
-    @OneToOne
-    private  Ashes ashes;
-    @OneToOne
-    private  Calcium calcium;
-    @OneToOne
-    private  Magnesium magnesium;
-    @OneToOne
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Carbohydrate carbohydrate;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Fiber fiber;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Ashes ashes;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Calcium calcium;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Magnesium magnesium;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Phosphorus phosphorus;
-    @OneToOne
-    private  Iron iron;
-    @OneToOne
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Iron iron;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Sodium sodium;
-    @OneToOne
-    private  Potassium potassium;
-    @OneToOne
-    private  Thiamine thiamine;
-    @OneToOne
-    private  Riboflavin riboflavin;
-    @OneToOne
-    private  Pyridoxine pyridoxine;
-    @OneToOne
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Potassium potassium;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Thiamine thiamine;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Riboflavin riboflavin;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Pyridoxine pyridoxine;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Niacin niacin;
-    @OneToOne
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Manganese manganese;
-    @OneToOne
-    private  Energy energy;
-    @OneToOne
-    private  FattyAcids fattyAcids;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private Energy energy;
+    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private FattyAcids fattyAcids;
+
 
     public Integer getId() {
         return id;
@@ -230,7 +253,8 @@ public class Attributes implements Serializable {
         private Double qty;
         private String unit;
 
-        @OneToOne
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
         private Attributes attributes;
 
         public Integer getId() {
@@ -274,6 +298,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -284,6 +343,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -294,6 +388,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -304,6 +433,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -314,6 +478,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -324,6 +523,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -334,6 +568,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -344,6 +613,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -354,6 +658,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -364,6 +703,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -374,6 +748,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -384,6 +793,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -394,6 +838,42 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -404,6 +884,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -414,6 +929,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -424,6 +974,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -434,6 +1019,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -444,6 +1064,41 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -454,6 +1109,42 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double kj;
         private Double kcal;
+
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getKj() {
+            return kj;
+        }
+
+        public void setKj(Double kj) {
+            this.kj = kj;
+        }
+
+        public Double getKcal() {
+            return kcal;
+        }
+
+        public void setKcal(Double kcal) {
+            this.kcal = kcal;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
     }
 
     @Entity
@@ -462,41 +1153,199 @@ public class Attributes implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
+
+
+
+        @OneToOne(mappedBy = "fattyAcids", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        private Saturated saturated;
+
+        @OneToOne(mappedBy = "fattyAcids", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        private Monounsaturated monounsaturated;
+
+        @OneToOne(mappedBy = "fattyAcids", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        private Polyunsaturated polyunsaturated;
+
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "attributes_id")
+        private Attributes attributes;
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Attributes getAttributes() {
+            return attributes;
+        }
+
+        public void setAttributes(Attributes attributes) {
+            this.attributes = attributes;
+        }
+
+        public Saturated getSaturated() {
+            return saturated;
+        }
+
+        public void setSaturated(Saturated saturated) {
+            this.saturated = saturated;
+        }
+
+        public Monounsaturated getMonounsaturated() {
+            return monounsaturated;
+        }
+
+        public void setMonounsaturated(Monounsaturated monounsaturated) {
+            this.monounsaturated = monounsaturated;
+        }
+
+        public Polyunsaturated getPolyunsaturated() {
+            return polyunsaturated;
+        }
+
+        public void setPolyunsaturated(Polyunsaturated polyunsaturated) {
+            this.polyunsaturated = polyunsaturated;
+        }
+    }
+
+    @Entity
+    public class Saturated implements Serializable {
+        private static final long serialVersionUID = -3471111841438024134L;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id;
         private Double qty;
         private String unit;
 
-        @Entity
-        public class Saturated implements Serializable {
-            private static final long serialVersionUID = -3471111841438024134L;
-            @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
-            private Integer id;
-            private String qty;
-            private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "fattyAcids_id")
+        private FattyAcids fattyAcids;
 
+        public Integer getId() {
+            return id;
         }
 
-        @Entity
-        public class Monounsaturated implements Serializable {
-            private static final long serialVersionUID = 7112317645960816411L;
-            @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
-            private Integer id;
-            private String qty;
-            private String String;
-
+        public void setId(Integer id) {
+            this.id = id;
         }
 
-        @Entity
-        public class Polyunsaturated implements Serializable {
-            private static final long serialVersionUID = 4241013025956703851L;
-            @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
-            private Integer id;
-            private String qty;
-            private String String;
+        public Double getQty() {
+            return qty;
+        }
 
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public FattyAcids getFattyAcids() {
+            return fattyAcids;
+        }
+
+        public void setFattyAcids(FattyAcids fattyAcids) {
+            this.fattyAcids = fattyAcids;
+        }
+    }
+
+    @Entity
+    public class Monounsaturated implements Serializable {
+        private static final long serialVersionUID = 7112317645960816411L;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id;
+        private Double qty;
+        private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "fattyAcids_id")
+        private FattyAcids fattyAcids;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public FattyAcids getFattyAcids() {
+            return fattyAcids;
+        }
+
+        public void setFattyAcids(FattyAcids fattyAcids) {
+            this.fattyAcids = fattyAcids;
         }
 
     }
+
+    @Entity
+    public class Polyunsaturated implements Serializable {
+        private static final long serialVersionUID = 4241013025956703851L;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id;
+        private Double qty;
+        private String unit;
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "fattyAcids_id")
+        private FattyAcids fattyAcids;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public Double getQty() {
+            return qty;
+        }
+
+        public void setQty(Double qty) {
+            this.qty = qty;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public FattyAcids getFattyAcids() {
+            return fattyAcids;
+        }
+
+        public void setFattyAcids(FattyAcids fattyAcids) {
+            this.fattyAcids = fattyAcids;
+        }
+
+    }
+
 }
+

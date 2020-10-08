@@ -20,6 +20,7 @@ public class Food implements Serializable {
     private String base_unit;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "attributes_id")
     private Attributes attributes;
 
     @JsonManagedReference
