@@ -2,6 +2,7 @@ package com.gyovanesouzza.wherefitnessws.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 public class Attributes implements Serializable {
@@ -10,73 +11,121 @@ public class Attributes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private Double humidity_qty;
+    private String humidity_unit;
+    private Double protein_qty;
+    private String protein_unit;
+    private Double lipid_qty;
+    private String lipid_unit;
+    private Double cholesterol_qty;
+    private String cholesterol_unit;
+    private Double carbohydrate_qty;
+    private String carbohydrate_unit;
+    private Double fiber_qty;
+    private String fiber_unit;
+    private Double ashes_qty;
+    private String ashes_unit;
+    private Double calcium_qty;
+    private String calcium_unit;
+    private Double _qty;
+    private String _unit;
+    private Double magnesium_qty;
+    private String magnesium_unit;
+    private Double phosphorus_qty;
+    private String phosphorus_unit;
+    private Double iron_qty;
+    private String iron_unit;
+    private Double sodium_qty;
+    private String sodium_unit;
+    private Double potassium_qty;
+    private String potassium_unit;
+    private Double thiamine_qty;
+    private String thiamine_unit;
+    private Double riboflavin_qty;
+    private String riboflavin_unit;
+    private Double pyridoxine_qty;
+    private String pyridoxine_unit;
+    private Double niacin_qty;
+    private String niacin_unit;
+    private Double manganese_qty;
+    private String manganese_unit;
+    private Double retinol_qty;
+    private String retinol_unit;
+    private Double energy_kcal;
+    private String energy_kj;
+    private Double fattyAcids_saturated_qty;
+    private String fattyAcids_saturated_unit;
+    private Double fattyAcids_monounsaturated_qty;
+    private String fattyAcids_monounsaturated_unit;
+    private Double fattyAcids_polyunsaturated_qty;
+    private String fattyAcids_polyunsaturatedunit;
+
     @OneToOne(mappedBy = "attributes")
     private Food food;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "humidity_id")
-    private Humidity humidity;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "protein_id")
-    private Protein protein;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lipid_id")
-    private Lipid lipid;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cholesterol_id")
-    private Cholesterol cholesterol;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carbohydrate_id")
-    private Carbohydrate carbohydrate;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fiber_id")
-    private Fiber fiber;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ashes_id")
-    private Ashes ashes;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "calcium_id")
-    private Calcium calcium;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "magnesium_id")
-    private Magnesium magnesium;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "phosphorus_id")
-    private Phosphorus phosphorus;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "iron_id")
-    private Iron iron;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sodium_id")
-    private Sodium sodium;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "potassium_id")
-    private Potassium potassium;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "thiamine_id")
-    private Thiamine thiamine;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "riboflavin_id")
-    private Riboflavin riboflavin;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pyridoxine_id")
-    private Pyridoxine pyridoxine;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "niacin_id")
-    private Niacin niacin;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "manganese_id")
-    private Manganese manganese;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "energy_id")
-    private Energy energy;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "retinol_id")
-    private Retinol retinol;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fattyAcids_id")
-    private FattyAcids fattyAcids;
+    public Attributes() {
 
+    }
+
+    public Attributes(Integer id, Double humidity_qty, String humidity_unit, Double protein_qty, String protein_unit, Double lipid_qty, String lipid_unit,
+                      Double cholesterol_qty, String cholesterol_unit, Double carbohydrate_qty, String carbohydrate_unit, Double fiber_qty, String fiber_unit,
+                      Double ashes_qty, String ashes_unit, Double calcium_qty, String calcium_unit, Double _qty, String _unit, Double magnesium_qty,
+                      String magnesium_unit, Double phosphorus_qty, String phosphorus_unit, Double iron_qty, String iron_unit, Double sodium_qty, String sodium_unit,
+                      Double potassium_qty, String potassium_unit, Double thiamine_qty, String thiamine_unit, Double riboflavin_qty, String riboflavin_unit, Double pyridoxine_qty,
+                      String pyridoxine_unit, Double niacin_qty, String niacin_unit, Double manganese_qty, String manganese_unit, Double retinol_qty, String retinol_unit,
+                      Double energy_kcal, String energy_kj, Double fattyAcids_saturated_qty, String fattyAcids_saturated_unit, Double fattyAcids_monounsaturated_qty,
+                      String fattyAcids_monounsaturated_unit, Double fattyAcids_polyunsaturated_qty, String fattyAcids_polyunsaturatedunit) {
+
+        this.id = id;
+        this.humidity_qty = humidity_qty;
+        this.humidity_unit = humidity_unit;
+        this.protein_qty = protein_qty;
+        this.protein_unit = protein_unit;
+        this.lipid_qty = lipid_qty;
+        this.lipid_unit = lipid_unit;
+        this.cholesterol_qty = cholesterol_qty;
+        this.cholesterol_unit = cholesterol_unit;
+        this.carbohydrate_qty = carbohydrate_qty;
+        this.carbohydrate_unit = carbohydrate_unit;
+        this.fiber_qty = fiber_qty;
+        this.fiber_unit = fiber_unit;
+        this.ashes_qty = ashes_qty;
+        this.ashes_unit = ashes_unit;
+        this.calcium_qty = calcium_qty;
+        this.calcium_unit = calcium_unit;
+        this._qty = _qty;
+        this._unit = _unit;
+        this.magnesium_qty = magnesium_qty;
+        this.magnesium_unit = magnesium_unit;
+        this.phosphorus_qty = phosphorus_qty;
+        this.phosphorus_unit = phosphorus_unit;
+        this.iron_qty = iron_qty;
+        this.iron_unit = iron_unit;
+        this.sodium_qty = sodium_qty;
+        this.sodium_unit = sodium_unit;
+        this.potassium_qty = potassium_qty;
+        this.potassium_unit = potassium_unit;
+        this.thiamine_qty = thiamine_qty;
+        this.thiamine_unit = thiamine_unit;
+        this.riboflavin_qty = riboflavin_qty;
+        this.riboflavin_unit = riboflavin_unit;
+        this.pyridoxine_qty = pyridoxine_qty;
+        this.pyridoxine_unit = pyridoxine_unit;
+        this.niacin_qty = niacin_qty;
+        this.niacin_unit = niacin_unit;
+        this.manganese_qty = manganese_qty;
+        this.manganese_unit = manganese_unit;
+        this.retinol_qty = retinol_qty;
+        this.retinol_unit = retinol_unit;
+        this.energy_kcal = energy_kcal;
+        this.energy_kj = energy_kj;
+        this.fattyAcids_saturated_qty = fattyAcids_saturated_qty;
+        this.fattyAcids_saturated_unit = fattyAcids_saturated_unit;
+        this.fattyAcids_monounsaturated_qty = fattyAcids_monounsaturated_qty;
+        this.fattyAcids_monounsaturated_unit = fattyAcids_monounsaturated_unit;
+        this.fattyAcids_polyunsaturated_qty = fattyAcids_polyunsaturated_qty;
+        this.fattyAcids_polyunsaturatedunit = fattyAcids_polyunsaturatedunit;
+    }
 
     public Integer getId() {
         return id;
@@ -86,1254 +135,464 @@ public class Attributes implements Serializable {
         this.id = id;
     }
 
-    public Humidity getHumidity() {
-        return humidity;
+    public Double getHumidity_qty() {
+        return humidity_qty;
     }
 
-    public void setHumidity(Humidity humidity) {
-        this.humidity = humidity;
+    public void setHumidity_qty(Double humidity_qty) {
+        this.humidity_qty = humidity_qty;
     }
 
-    public Protein getProtein() {
-        return protein;
+    public String getHumidity_unit() {
+        return humidity_unit;
     }
 
-    public void setProtein(Protein protein) {
-        this.protein = protein;
+    public void setHumidity_unit(String humidity_unit) {
+        this.humidity_unit = humidity_unit;
     }
 
-    public Lipid getLipid() {
-        return lipid;
+    public Double getProtein_qty() {
+        return protein_qty;
     }
 
-    public void setLipid(Lipid lipid) {
-        this.lipid = lipid;
+    public void setProtein_qty(Double protein_qty) {
+        this.protein_qty = protein_qty;
     }
 
-    public Cholesterol getCholesterol() {
-        return cholesterol;
+    public String getProtein_unit() {
+        return protein_unit;
     }
 
-    public void setCholesterol(Cholesterol cholesterol) {
-        this.cholesterol = cholesterol;
+    public void setProtein_unit(String protein_unit) {
+        this.protein_unit = protein_unit;
     }
 
-    public Carbohydrate getCarbohydrate() {
-        return carbohydrate;
+    public Double getLipid_qty() {
+        return lipid_qty;
     }
 
-    public void setCarbohydrate(Carbohydrate carbohydrate) {
-        this.carbohydrate = carbohydrate;
+    public void setLipid_qty(Double lipid_qty) {
+        this.lipid_qty = lipid_qty;
     }
 
-    public Fiber getFiber() {
-        return fiber;
+    public String getLipid_unit() {
+        return lipid_unit;
     }
 
-    public void setFiber(Fiber fiber) {
-        this.fiber = fiber;
+    public void setLipid_unit(String lipid_unit) {
+        this.lipid_unit = lipid_unit;
     }
 
-    public Ashes getAshes() {
-        return ashes;
+    public Double getCholesterol_qty() {
+        return cholesterol_qty;
     }
 
-    public void setAshes(Ashes ashes) {
-        this.ashes = ashes;
+    public void setCholesterol_qty(Double cholesterol_qty) {
+        this.cholesterol_qty = cholesterol_qty;
     }
 
-    public Calcium getCalcium() {
-        return calcium;
+    public String getCholesterol_unit() {
+        return cholesterol_unit;
     }
 
-    public void setCalcium(Calcium calcium) {
-        this.calcium = calcium;
+    public void setCholesterol_unit(String cholesterol_unit) {
+        this.cholesterol_unit = cholesterol_unit;
     }
 
-    public Magnesium getMagnesium() {
-        return magnesium;
+    public Double getCarbohydrate_qty() {
+        return carbohydrate_qty;
     }
 
-    public void setMagnesium(Magnesium magnesium) {
-        this.magnesium = magnesium;
+    public void setCarbohydrate_qty(Double carbohydrate_qty) {
+        this.carbohydrate_qty = carbohydrate_qty;
     }
 
-    public Phosphorus getPhosphorus() {
-        return phosphorus;
+    public String getCarbohydrate_unit() {
+        return carbohydrate_unit;
     }
 
-    public void setPhosphorus(Phosphorus phosphorus) {
-        this.phosphorus = phosphorus;
+    public void setCarbohydrate_unit(String carbohydrate_unit) {
+        this.carbohydrate_unit = carbohydrate_unit;
     }
 
-    public Iron getIron() {
-        return iron;
+    public Double getFiber_qty() {
+        return fiber_qty;
     }
 
-    public void setIron(Iron iron) {
-        this.iron = iron;
+    public void setFiber_qty(Double fiber_qty) {
+        this.fiber_qty = fiber_qty;
     }
 
-    public Sodium getSodium() {
-        return sodium;
+    public String getFiber_unit() {
+        return fiber_unit;
     }
 
-    public void setSodium(Sodium sodium) {
-        this.sodium = sodium;
+    public void setFiber_unit(String fiber_unit) {
+        this.fiber_unit = fiber_unit;
     }
 
-    public Potassium getPotassium() {
-        return potassium;
+    public Double getAshes_qty() {
+        return ashes_qty;
     }
 
-    public void setPotassium(Potassium potassium) {
-        this.potassium = potassium;
+    public void setAshes_qty(Double ashes_qty) {
+        this.ashes_qty = ashes_qty;
     }
 
-    public Thiamine getThiamine() {
-        return thiamine;
+    public String getAshes_unit() {
+        return ashes_unit;
     }
 
-    public void setThiamine(Thiamine thiamine) {
-        this.thiamine = thiamine;
+    public void setAshes_unit(String ashes_unit) {
+        this.ashes_unit = ashes_unit;
     }
 
-    public Riboflavin getRiboflavin() {
-        return riboflavin;
+    public Double getCalcium_qty() {
+        return calcium_qty;
     }
 
-    public void setRiboflavin(Riboflavin riboflavin) {
-        this.riboflavin = riboflavin;
+    public void setCalcium_qty(Double calcium_qty) {
+        this.calcium_qty = calcium_qty;
     }
 
-    public Pyridoxine getPyridoxine() {
-        return pyridoxine;
+    public String getCalcium_unit() {
+        return calcium_unit;
     }
 
-    public void setPyridoxine(Pyridoxine pyridoxine) {
-        this.pyridoxine = pyridoxine;
+    public void setCalcium_unit(String calcium_unit) {
+        this.calcium_unit = calcium_unit;
     }
 
-    public Niacin getNiacin() {
-        return niacin;
+    public Double get_qty() {
+        return _qty;
     }
 
-    public void setNiacin(Niacin niacin) {
-        this.niacin = niacin;
+    public void set_qty(Double _qty) {
+        this._qty = _qty;
     }
 
-    public Manganese getManganese() {
-        return manganese;
+    public String get_unit() {
+        return _unit;
     }
 
-    public void setManganese(Manganese manganese) {
-        this.manganese = manganese;
+    public void set_unit(String _unit) {
+        this._unit = _unit;
     }
 
-    public Energy getEnergy() {
-        return energy;
+    public Double getMagnesium_qty() {
+        return magnesium_qty;
     }
 
-    public void setEnergy(Energy energy) {
-        this.energy = energy;
+    public void setMagnesium_qty(Double magnesium_qty) {
+        this.magnesium_qty = magnesium_qty;
     }
 
-    public FattyAcids getFattyAcids() {
-        return fattyAcids;
+    public String getMagnesium_unit() {
+        return magnesium_unit;
     }
 
-    public void setFattyAcids(FattyAcids fattyAcids) {
-        this.fattyAcids = fattyAcids;
+    public void setMagnesium_unit(String magnesium_unit) {
+        this.magnesium_unit = magnesium_unit;
     }
 
-    @Entity
-    public class Humidity implements Serializable {
-        private static final long serialVersionUID = -899084491328752007L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-
-        private Double qty;
-        private String unit;
-
-        @OneToOne(mappedBy = "humidity")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public Double getPhosphorus_qty() {
+        return phosphorus_qty;
     }
-
-    @Entity
-    public class Protein implements Serializable {
-        private static final long serialVersionUID = -7725473209223179641L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-
-        @OneToOne(mappedBy = "protein")
-        private Attributes attributes;
 
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setPhosphorus_qty(Double phosphorus_qty) {
+        this.phosphorus_qty = phosphorus_qty;
     }
-
-    @Entity
-    public class Lipid implements Serializable {
-        private static final long serialVersionUID = 5007160088281713281L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "lipid")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
 
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public String getPhosphorus_unit() {
+        return phosphorus_unit;
     }
-
-    @Entity
-    public class Cholesterol implements Serializable {
-        private static final long serialVersionUID = 1535925646132414293L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "cholesterol")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
 
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setPhosphorus_unit(String phosphorus_unit) {
+        this.phosphorus_unit = phosphorus_unit;
     }
-
-    @Entity
-    public class Carbohydrate implements Serializable {
-        private static final long serialVersionUID = 2387133304211134480L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "carbohydrate")
-        private Attributes attributes;
 
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public Double getIron_qty() {
+        return iron_qty;
     }
-
-    @Entity
-    public class Fiber implements Serializable {
-        private static final long serialVersionUID = -6816928190341015401L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "fiber")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
 
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setIron_qty(Double iron_qty) {
+        this.iron_qty = iron_qty;
     }
-
-    @Entity
-    public class Ashes implements Serializable {
-        private static final long serialVersionUID = -8638281828182244L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-
-        @OneToOne(mappedBy = "ashes")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
 
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public String getIron_unit() {
+        return iron_unit;
     }
 
-    @Entity
-    public class Calcium implements Serializable {
-        private static final long serialVersionUID = 6301803793787698094L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "calcium")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setIron_unit(String iron_unit) {
+        this.iron_unit = iron_unit;
     }
-
-    @Entity
-    public class Magnesium implements Serializable {
-        private static final long serialVersionUID = 6851843763923928344L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-
-        @OneToOne(mappedBy = "magnesium")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
 
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public Double getSodium_qty() {
+        return sodium_qty;
     }
-
-    @Entity
-    public class Phosphorus implements Serializable {
-        private static final long serialVersionUID = -8749720320709418884L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "phosphorus")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
 
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setSodium_qty(Double sodium_qty) {
+        this.sodium_qty = sodium_qty;
     }
-
-    @Entity
-    public class Iron implements Serializable {
-        private static final long serialVersionUID = -1250928321013813762L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "iron")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
 
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public String getSodium_unit() {
+        return sodium_unit;
     }
-
-    @Entity
-    public class Sodium implements Serializable {
-        private static final long serialVersionUID = 4914296224873885646L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "sodium")
-        private Attributes attributes;
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
 
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setSodium_unit(String sodium_unit) {
+        this.sodium_unit = sodium_unit;
     }
-
-    @Entity
-    public class Potassium implements Serializable {
-        private static final long serialVersionUID = 5718353177726724643L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "potassium")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
 
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public Double getPotassium_qty() {
+        return potassium_qty;
     }
-
-    @Entity
-    public class Retinol implements Serializable {
-        private static final long serialVersionUID = 2363485483897229702L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
 
-        @OneToOne(mappedBy = "retinol")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setPotassium_qty(Double potassium_qty) {
+        this.potassium_qty = potassium_qty;
     }
-
-    @Entity
-    public class Thiamine implements Serializable {
-        private static final long serialVersionUID = 2305133337187257522L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "thiamine")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
 
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public String getPotassium_unit() {
+        return potassium_unit;
     }
-
-    @Entity
-    public class Riboflavin implements Serializable {
-        private static final long serialVersionUID = 2767487715913117849L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "riboflavin")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
 
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
-    }
-
-    @Entity
-    public class Pyridoxine implements Serializable {
-        private static final long serialVersionUID = -1994648724131613798L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "pyridoxine")
-
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
-    }
-
-    @Entity
-    public class Niacin implements Serializable {
-        private static final long serialVersionUID = -7253429165922475583L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "niacin")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setPotassium_unit(String potassium_unit) {
+        this.potassium_unit = potassium_unit;
     }
-
-    @Entity
-    public class Manganese implements Serializable {
-        private static final long serialVersionUID = 1898252606051975128L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "manganese")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getQty() {
-            return qty;
-        }
-
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
 
-        public String getUnit() {
-            return unit;
-        }
-
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public Double getThiamine_qty() {
+        return thiamine_qty;
     }
-
-    @Entity
-    public class Energy implements Serializable {
-        private static final long serialVersionUID = 162855613295005286L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double kj;
-        private Double kcal;
-
-        @OneToOne(mappedBy = "energy")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public Double getKj() {
-            return kj;
-        }
 
-        public void setKj(Double kj) {
-            this.kj = kj;
-        }
-
-        public Double getKcal() {
-            return kcal;
-        }
-
-        public void setKcal(Double kcal) {
-            this.kcal = kcal;
-        }
-
-        public Attributes getAttributes() {
-            return attributes;
-        }
-
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public void setThiamine_qty(Double thiamine_qty) {
+        this.thiamine_qty = thiamine_qty;
     }
-
-    @Entity
-    public class FattyAcids implements Serializable {
-        private static final long serialVersionUID = -7253429165922475583L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-
 
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "saturated_id")
-        private Saturated saturated;
-
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "monounsaturated_id")
-        private Monounsaturated monounsaturated;
-
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "polyunsaturated_id")
-        private Polyunsaturated polyunsaturated;
-
-        @OneToOne(mappedBy = "fattyAcids")
-        private Attributes attributes;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
+    public String getThiamine_unit() {
+        return thiamine_unit;
+    }
 
-        public Attributes getAttributes() {
-            return attributes;
-        }
+    public void setThiamine_unit(String thiamine_unit) {
+        this.thiamine_unit = thiamine_unit;
+    }
 
-        public void setAttributes(Attributes attributes) {
-            this.attributes = attributes;
-        }
+    public Double getRiboflavin_qty() {
+        return riboflavin_qty;
+    }
 
-        public Saturated getSaturated() {
-            return saturated;
-        }
+    public void setRiboflavin_qty(Double riboflavin_qty) {
+        this.riboflavin_qty = riboflavin_qty;
+    }
 
-        public void setSaturated(Saturated saturated) {
-            this.saturated = saturated;
-        }
+    public String getRiboflavin_unit() {
+        return riboflavin_unit;
+    }
 
-        public Monounsaturated getMonounsaturated() {
-            return monounsaturated;
-        }
+    public void setRiboflavin_unit(String riboflavin_unit) {
+        this.riboflavin_unit = riboflavin_unit;
+    }
 
-        public void setMonounsaturated(Monounsaturated monounsaturated) {
-            this.monounsaturated = monounsaturated;
-        }
+    public Double getPyridoxine_qty() {
+        return pyridoxine_qty;
+    }
 
-        public Polyunsaturated getPolyunsaturated() {
-            return polyunsaturated;
-        }
+    public void setPyridoxine_qty(Double pyridoxine_qty) {
+        this.pyridoxine_qty = pyridoxine_qty;
+    }
 
-        public void setPolyunsaturated(Polyunsaturated polyunsaturated) {
-            this.polyunsaturated = polyunsaturated;
-        }
+    public String getPyridoxine_unit() {
+        return pyridoxine_unit;
     }
 
-    @Entity
-    public class Saturated implements Serializable {
-        private static final long serialVersionUID = -3471111841438024134L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
+    public void setPyridoxine_unit(String pyridoxine_unit) {
+        this.pyridoxine_unit = pyridoxine_unit;
+    }
 
+    public Double getNiacin_qty() {
+        return niacin_qty;
+    }
 
-        @OneToOne(mappedBy = "saturated")
-        private FattyAcids fattyAcids;
+    public void setNiacin_qty(Double niacin_qty) {
+        this.niacin_qty = niacin_qty;
+    }
 
-        public Integer getId() {
-            return id;
-        }
+    public String getNiacin_unit() {
+        return niacin_unit;
+    }
 
-        public void setId(Integer id) {
-            this.id = id;
-        }
+    public void setNiacin_unit(String niacin_unit) {
+        this.niacin_unit = niacin_unit;
+    }
 
-        public Double getQty() {
-            return qty;
-        }
+    public Double getManganese_qty() {
+        return manganese_qty;
+    }
 
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
+    public void setManganese_qty(Double manganese_qty) {
+        this.manganese_qty = manganese_qty;
+    }
 
-        public String getUnit() {
-            return unit;
-        }
+    public String getManganese_unit() {
+        return manganese_unit;
+    }
 
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
+    public void setManganese_unit(String manganese_unit) {
+        this.manganese_unit = manganese_unit;
+    }
 
-        public FattyAcids getFattyAcids() {
-            return fattyAcids;
-        }
+    public Double getRetinol_qty() {
+        return retinol_qty;
+    }
 
-        public void setFattyAcids(FattyAcids fattyAcids) {
-            this.fattyAcids = fattyAcids;
-        }
+    public void setRetinol_qty(Double retinol_qty) {
+        this.retinol_qty = retinol_qty;
     }
 
-    @Entity
-    public class Monounsaturated implements Serializable {
-        private static final long serialVersionUID = 7112317645960816411L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "monounsaturated")
+    public String getRetinol_unit() {
+        return retinol_unit;
+    }
 
-        private FattyAcids fattyAcids;
+    public void setRetinol_unit(String retinol_unit) {
+        this.retinol_unit = retinol_unit;
+    }
 
-        public Integer getId() {
-            return id;
-        }
+    public Double getEnergy_kcal() {
+        return energy_kcal;
+    }
 
-        public void setId(Integer id) {
-            this.id = id;
-        }
+    public void setEnergy_kcal(Double energy_kcal) {
+        this.energy_kcal = energy_kcal;
+    }
 
-        public Double getQty() {
-            return qty;
-        }
+    public String getEnergy_kj() {
+        return energy_kj;
+    }
 
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
+    public void setEnergy_kj(String energy_kj) {
+        this.energy_kj = energy_kj;
+    }
 
-        public String getUnit() {
-            return unit;
-        }
+    public Double getFattyAcids_saturated_qty() {
+        return fattyAcids_saturated_qty;
+    }
 
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
+    public void setFattyAcids_saturated_qty(Double fattyAcids_saturated_qty) {
+        this.fattyAcids_saturated_qty = fattyAcids_saturated_qty;
+    }
 
-        public FattyAcids getFattyAcids() {
-            return fattyAcids;
-        }
+    public String getFattyAcids_saturated_unit() {
+        return fattyAcids_saturated_unit;
+    }
 
-        public void setFattyAcids(FattyAcids fattyAcids) {
-            this.fattyAcids = fattyAcids;
-        }
+    public void setFattyAcids_saturated_unit(String fattyAcids_saturated_unit) {
+        this.fattyAcids_saturated_unit = fattyAcids_saturated_unit;
+    }
 
+    public Double getFattyAcids_monounsaturated_qty() {
+        return fattyAcids_monounsaturated_qty;
     }
 
-    @Entity
-    public class Polyunsaturated implements Serializable {
-        private static final long serialVersionUID = 4241013025956703851L;
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private Double qty;
-        private String unit;
-        @OneToOne(mappedBy = "polyunsaturated")
+    public void setFattyAcids_monounsaturated_qty(Double fattyAcids_monounsaturated_qty) {
+        this.fattyAcids_monounsaturated_qty = fattyAcids_monounsaturated_qty;
+    }
 
-        private FattyAcids fattyAcids;
+    public String getFattyAcids_monounsaturated_unit() {
+        return fattyAcids_monounsaturated_unit;
+    }
 
-        public Integer getId() {
-            return id;
-        }
+    public void setFattyAcids_monounsaturated_unit(String fattyAcids_monounsaturated_unit) {
+        this.fattyAcids_monounsaturated_unit = fattyAcids_monounsaturated_unit;
+    }
 
-        public void setId(Integer id) {
-            this.id = id;
-        }
+    public Double getFattyAcids_polyunsaturated_qty() {
+        return fattyAcids_polyunsaturated_qty;
+    }
 
-        public Double getQty() {
-            return qty;
-        }
+    public void setFattyAcids_polyunsaturated_qty(Double fattyAcids_polyunsaturated_qty) {
+        this.fattyAcids_polyunsaturated_qty = fattyAcids_polyunsaturated_qty;
+    }
 
-        public void setQty(Double qty) {
-            this.qty = qty;
-        }
+    public String getFattyAcids_polyunsaturatedunit() {
+        return fattyAcids_polyunsaturatedunit;
+    }
 
-        public String getUnit() {
-            return unit;
-        }
+    public void setFattyAcids_polyunsaturatedunit(String fattyAcids_polyunsaturatedunit) {
+        this.fattyAcids_polyunsaturatedunit = fattyAcids_polyunsaturatedunit;
+    }
 
-        public void setUnit(String unit) {
-            this.unit = unit;
-        }
+    public Food getFood() {
+        return food;
+    }
 
-        public FattyAcids getFattyAcids() {
-            return fattyAcids;
-        }
+    public void setFood(Food food) {
+        this.food = food;
+    }
 
-        public void setFattyAcids(FattyAcids fattyAcids) {
-            this.fattyAcids = fattyAcids;
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Attributes that = (Attributes) o;
+        return id.equals(that.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        return "Attributes{" +
+                "id=" + id +
+                ", humidity_qty=" + humidity_qty +
+                ", humidity_unit='" + humidity_unit + '\'' +
+                ", protein_qty=" + protein_qty +
+                ", protein_unit='" + protein_unit + '\'' +
+                ", lipid_qty=" + lipid_qty +
+                ", lipid_unit='" + lipid_unit + '\'' +
+                ", cholesterol_qty=" + cholesterol_qty +
+                ", cholesterol_unit='" + cholesterol_unit + '\'' +
+                ", carbohydrate_qty=" + carbohydrate_qty +
+                ", carbohydrate_unit='" + carbohydrate_unit + '\'' +
+                ", fiber_qty=" + fiber_qty +
+                ", fiber_unit='" + fiber_unit + '\'' +
+                ", ashes_qty=" + ashes_qty +
+                ", ashes_unit='" + ashes_unit + '\'' +
+                ", calcium_qty=" + calcium_qty +
+                ", calcium_unit='" + calcium_unit + '\'' +
+                ", _qty=" + _qty +
+                ", _unit='" + _unit + '\'' +
+                ", magnesium_qty=" + magnesium_qty +
+                ", magnesium_unit='" + magnesium_unit + '\'' +
+                ", phosphorus_qty=" + phosphorus_qty +
+                ", phosphorus_unit='" + phosphorus_unit + '\'' +
+                ", iron_qty=" + iron_qty +
+                ", iron_unit='" + iron_unit + '\'' +
+                ", sodium_qty=" + sodium_qty +
+                ", sodium_unit='" + sodium_unit + '\'' +
+                ", potassium_qty=" + potassium_qty +
+                ", potassium_unit='" + potassium_unit + '\'' +
+                ", thiamine_qty=" + thiamine_qty +
+                ", thiamine_unit='" + thiamine_unit + '\'' +
+                ", riboflavin_qty=" + riboflavin_qty +
+                ", riboflavin_unit='" + riboflavin_unit + '\'' +
+                ", pyridoxine_qty=" + pyridoxine_qty +
+                ", pyridoxine_unit='" + pyridoxine_unit + '\'' +
+                ", niacin_qty=" + niacin_qty +
+                ", niacin_unit='" + niacin_unit + '\'' +
+                ", manganese_qty=" + manganese_qty +
+                ", manganese_unit='" + manganese_unit + '\'' +
+                ", retinol_qty=" + retinol_qty +
+                ", retinol_unit='" + retinol_unit + '\'' +
+                ", energy_kcal=" + energy_kcal +
+                ", energy_kj='" + energy_kj + '\'' +
+                ", fattyAcids_saturated_qty=" + fattyAcids_saturated_qty +
+                ", fattyAcids_saturated_unit='" + fattyAcids_saturated_unit + '\'' +
+                ", fattyAcids_monounsaturated_qty=" + fattyAcids_monounsaturated_qty +
+                ", fattyAcids_monounsaturated_unit='" + fattyAcids_monounsaturated_unit + '\'' +
+                ", fattyAcids_polyunsaturated_qty=" + fattyAcids_polyunsaturated_qty +
+                ", fattyAcids_polyunsaturatedunit='" + fattyAcids_polyunsaturatedunit + '\'' +
+                '}';
+    }
 }
 

@@ -14,18 +14,19 @@ public class Food implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
     private String description;
     private Integer base_qty;
     private String base_unit;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attributes_id")
+    @JoinColumn(name = "attributes_id", foreignKey=@ForeignKey(name = "FK_Food_attributes"))
     private Attributes attributes;
 
     @JsonManagedReference
     @ManyToOne()
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", foreignKey=@ForeignKey(name = "FK_Food_category"))
     private Category category;
 
     public Food() {
