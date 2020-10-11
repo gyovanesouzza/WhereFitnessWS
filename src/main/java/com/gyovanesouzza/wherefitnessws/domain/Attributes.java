@@ -13,65 +13,68 @@ public class Attributes implements Serializable {
     @OneToOne(mappedBy = "attributes")
     private Food food;
 
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "humidity_id")
     private Humidity humidity;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "protein_id")
     private Protein protein;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lipid_id")
     private Lipid lipid;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cholesterol_id")
     private Cholesterol cholesterol;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "carbohydrate_id")
     private Carbohydrate carbohydrate;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fiber_id")
     private Fiber fiber;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ashes_id")
     private Ashes ashes;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "calcium_id")
     private Calcium calcium;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "magnesium_id")
     private Magnesium magnesium;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "phosphorus_id")
     private Phosphorus phosphorus;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "iron_id")
     private Iron iron;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sodium_id")
     private Sodium sodium;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "potassium_id")
     private Potassium potassium;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "thiamine_id")
     private Thiamine thiamine;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "riboflavin_id")
     private Riboflavin riboflavin;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pyridoxine_id")
     private Pyridoxine pyridoxine;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "niacin_id")
     private Niacin niacin;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manganese_id")
     private Manganese manganese;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "energy_id")
     private Energy energy;
-    @OneToOne(mappedBy = "attributes", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "retinol_id")
+    private Retinol retinol;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fattyAcids_id")
     private FattyAcids fattyAcids;
 
 
@@ -253,8 +256,7 @@ public class Attributes implements Serializable {
         private Double qty;
         private String unit;
 
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "humidity")
         private Attributes attributes;
 
         public Integer getId() {
@@ -298,8 +300,8 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+
+        @OneToOne(mappedBy = "protein")
         private Attributes attributes;
 
         public Integer getId() {
@@ -343,8 +345,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "lipid")
         private Attributes attributes;
 
         public Integer getId() {
@@ -388,8 +389,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "cholesterol")
         private Attributes attributes;
 
         public Integer getId() {
@@ -433,8 +433,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "carbohydrate")
         private Attributes attributes;
 
         public Integer getId() {
@@ -478,8 +477,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "fiber")
         private Attributes attributes;
 
         public Integer getId() {
@@ -523,8 +521,8 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+
+        @OneToOne(mappedBy = "ashes")
         private Attributes attributes;
 
         public Integer getId() {
@@ -568,8 +566,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "calcium")
         private Attributes attributes;
 
         public Integer getId() {
@@ -613,8 +610,8 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+
+        @OneToOne(mappedBy = "magnesium")
         private Attributes attributes;
 
         public Integer getId() {
@@ -658,8 +655,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "phosphorus")
         private Attributes attributes;
 
         public Integer getId() {
@@ -703,8 +699,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "iron")
         private Attributes attributes;
 
         public Integer getId() {
@@ -748,10 +743,8 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "sodium")
         private Attributes attributes;
-
         public Integer getId() {
             return id;
         }
@@ -793,8 +786,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "potassium")
         private Attributes attributes;
 
         public Integer getId() {
@@ -839,8 +831,7 @@ public class Attributes implements Serializable {
         private Double qty;
         private String unit;
 
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "retinol")
         private Attributes attributes;
 
         public Integer getId() {
@@ -884,8 +875,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "thiamine")
         private Attributes attributes;
 
         public Integer getId() {
@@ -929,8 +919,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "riboflavin")
         private Attributes attributes;
 
         public Integer getId() {
@@ -974,8 +963,8 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "pyridoxine")
+
         private Attributes attributes;
 
         public Integer getId() {
@@ -1019,8 +1008,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "niacin")
         private Attributes attributes;
 
         public Integer getId() {
@@ -1064,8 +1052,7 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "manganese")
         private Attributes attributes;
 
         public Integer getId() {
@@ -1110,8 +1097,7 @@ public class Attributes implements Serializable {
         private Double kj;
         private Double kcal;
 
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "energy")
         private Attributes attributes;
 
         public Integer getId() {
@@ -1155,19 +1141,21 @@ public class Attributes implements Serializable {
         private Integer id;
 
 
-
-        @OneToOne(mappedBy = "fattyAcids", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "saturated_id")
         private Saturated saturated;
 
-        @OneToOne(mappedBy = "fattyAcids", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "monounsaturated_id")
         private Monounsaturated monounsaturated;
 
-        @OneToOne(mappedBy = "fattyAcids", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        @OneToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "polyunsaturated_id")
         private Polyunsaturated polyunsaturated;
 
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "attributes_id")
+        @OneToOne(mappedBy = "fattyAcids")
         private Attributes attributes;
+
         public Integer getId() {
             return id;
         }
@@ -1218,8 +1206,8 @@ public class Attributes implements Serializable {
         private Double qty;
         private String unit;
 
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "fattyAcids_id")
+
+        @OneToOne(mappedBy = "saturated")
         private FattyAcids fattyAcids;
 
         public Integer getId() {
@@ -1263,8 +1251,8 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "fattyAcids_id")
+        @OneToOne(mappedBy = "monounsaturated")
+
         private FattyAcids fattyAcids;
 
         public Integer getId() {
@@ -1309,8 +1297,8 @@ public class Attributes implements Serializable {
         private Integer id;
         private Double qty;
         private String unit;
-        @OneToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "fattyAcids_id")
+        @OneToOne(mappedBy = "polyunsaturated")
+
         private FattyAcids fattyAcids;
 
         public Integer getId() {
