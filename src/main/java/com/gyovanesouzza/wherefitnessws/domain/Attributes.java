@@ -1,12 +1,15 @@
 package com.gyovanesouzza.wherefitnessws.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 public class Attributes implements Serializable {
-    private static final long serialVersionUID = 4025489455635149860L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,8 +30,6 @@ public class Attributes implements Serializable {
     private String ashes_unit;
     private Double calcium_qty;
     private String calcium_unit;
-    private Double _qty;
-    private String _unit;
     private Double magnesium_qty;
     private String magnesium_unit;
     private Double phosphorus_qty;
@@ -52,7 +53,7 @@ public class Attributes implements Serializable {
     private Double retinol_qty;
     private String retinol_unit;
     private Double energy_kcal;
-    private String energy_kj;
+    private Double energy_kj;
     private Double fattyAcids_saturated_qty;
     private String fattyAcids_saturated_unit;
     private Double fattyAcids_monounsaturated_qty;
@@ -60,6 +61,7 @@ public class Attributes implements Serializable {
     private Double fattyAcids_polyunsaturated_qty;
     private String fattyAcids_polyunsaturatedunit;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "attributes")
     private Food food;
 
@@ -68,12 +70,16 @@ public class Attributes implements Serializable {
     }
 
     public Attributes(Integer id, Double humidity_qty, String humidity_unit, Double protein_qty, String protein_unit, Double lipid_qty, String lipid_unit,
-                      Double cholesterol_qty, String cholesterol_unit, Double carbohydrate_qty, String carbohydrate_unit, Double fiber_qty, String fiber_unit,
-                      Double ashes_qty, String ashes_unit, Double calcium_qty, String calcium_unit, Double _qty, String _unit, Double magnesium_qty,
-                      String magnesium_unit, Double phosphorus_qty, String phosphorus_unit, Double iron_qty, String iron_unit, Double sodium_qty, String sodium_unit,
-                      Double potassium_qty, String potassium_unit, Double thiamine_qty, String thiamine_unit, Double riboflavin_qty, String riboflavin_unit, Double pyridoxine_qty,
-                      String pyridoxine_unit, Double niacin_qty, String niacin_unit, Double manganese_qty, String manganese_unit, Double retinol_qty, String retinol_unit,
-                      Double energy_kcal, String energy_kj, Double fattyAcids_saturated_qty, String fattyAcids_saturated_unit, Double fattyAcids_monounsaturated_qty,
+                      Double cholesterol_qty, String cholesterol_unit, Double carbohydrate_qty,
+                      String carbohydrate_unit, Double fiber_qty, String fiber_unit, Double ashes_qty,
+                      String ashes_unit, Double calcium_qty, String calcium_unit, Double magnesium_qty,
+                      String magnesium_unit, Double phosphorus_qty, String phosphorus_unit, Double iron_qty,
+                      String iron_unit, Double sodium_qty, String sodium_unit, Double potassium_qty,
+                      String potassium_unit, Double thiamine_qty, String thiamine_unit, Double riboflavin_qty,
+                      String riboflavin_unit, Double pyridoxine_qty, String pyridoxine_unit, Double niacin_qty,
+                      String niacin_unit, Double manganese_qty, String manganese_unit, Double retinol_qty,
+                      String retinol_unit, Double energy_kcal, Double energy_kj, Double fattyAcids_saturated_qty,
+                      String fattyAcids_saturated_unit, Double fattyAcids_monounsaturated_qty,
                       String fattyAcids_monounsaturated_unit, Double fattyAcids_polyunsaturated_qty, String fattyAcids_polyunsaturatedunit) {
 
         this.id = id;
@@ -93,8 +99,7 @@ public class Attributes implements Serializable {
         this.ashes_unit = ashes_unit;
         this.calcium_qty = calcium_qty;
         this.calcium_unit = calcium_unit;
-        this._qty = _qty;
-        this._unit = _unit;
+
         this.magnesium_qty = magnesium_qty;
         this.magnesium_unit = magnesium_unit;
         this.phosphorus_qty = phosphorus_qty;
@@ -261,22 +266,6 @@ public class Attributes implements Serializable {
 
     public void setCalcium_unit(String calcium_unit) {
         this.calcium_unit = calcium_unit;
-    }
-
-    public Double get_qty() {
-        return _qty;
-    }
-
-    public void set_qty(Double _qty) {
-        this._qty = _qty;
-    }
-
-    public String get_unit() {
-        return _unit;
-    }
-
-    public void set_unit(String _unit) {
-        this._unit = _unit;
     }
 
     public Double getMagnesium_qty() {
@@ -463,11 +452,11 @@ public class Attributes implements Serializable {
         this.energy_kcal = energy_kcal;
     }
 
-    public String getEnergy_kj() {
+    public Double getEnergy_kj() {
         return energy_kj;
     }
 
-    public void setEnergy_kj(String energy_kj) {
+    public void setEnergy_kj(Double energy_kj) {
         this.energy_kj = energy_kj;
     }
 
@@ -518,7 +507,7 @@ public class Attributes implements Serializable {
     public void setFattyAcids_polyunsaturatedunit(String fattyAcids_polyunsaturatedunit) {
         this.fattyAcids_polyunsaturatedunit = fattyAcids_polyunsaturatedunit;
     }
-
+    @JsonIgnore
     public Food getFood() {
         return food;
     }
@@ -560,8 +549,6 @@ public class Attributes implements Serializable {
                 ", ashes_unit='" + ashes_unit + '\'' +
                 ", calcium_qty=" + calcium_qty +
                 ", calcium_unit='" + calcium_unit + '\'' +
-                ", _qty=" + _qty +
-                ", _unit='" + _unit + '\'' +
                 ", magnesium_qty=" + magnesium_qty +
                 ", magnesium_unit='" + magnesium_unit + '\'' +
                 ", phosphorus_qty=" + phosphorus_qty +

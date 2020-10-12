@@ -1,6 +1,7 @@
 package com.gyovanesouzza.wherefitnessws.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,22 +12,22 @@ import java.util.Objects;
 @Entity
 public class Category implements Serializable {
 
-    private static final long serialVersionUID = -3738768377992716180L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String categoria;
+    private String Category;
 
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Food> foods = new ArrayList<Food>();
 
     public Category() {
     }
 
-    public Category(Integer id, String categoria) {
+    public Category(Integer id, String Category) {
         this.id = id;
-        this.categoria = categoria;
+        this.Category = Category;
     }
 
     public Integer getId() {
@@ -38,13 +39,14 @@ public class Category implements Serializable {
     }
 
     public String getCategoria() {
-        return categoria;
+        return Category;
     }
 
     public void setCategoria(String categoria) {
-        this.categoria = categoria;
+        this.Category = Category;
     }
 
+    @JsonIgnore
     public List<Food> getFoods() {
         return foods;
     }

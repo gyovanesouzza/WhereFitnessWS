@@ -22,7 +22,7 @@ public class FoodService {
     public Food findById(Integer id) {
         Optional<Food> obj = foodRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
-                "Objeto não encontrado! Id: " + id + ", Tipo: " + getClass().getName()));
+                "Object not found! Id: " + id + ", Type: " + getClass().getName()));
 
     }
 }

@@ -1,5 +1,6 @@
 package com.gyovanesouzza.wherefitnessws.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -10,21 +11,21 @@ import java.util.Objects;
 @Entity
 public class Food implements Serializable {
 
-    private static final long serialVersionUID = 8254300774345914538L;
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
     private String description;
     private Integer base_qty;
     private String base_unit;
 
+@JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attributes_id", foreignKey=@ForeignKey(name = "FK_Food_attributes"))
     private Attributes attributes;
 
-    @JsonManagedReference
     @ManyToOne()
     @JoinColumn(name = "category_id", foreignKey=@ForeignKey(name = "FK_Food_category"))
     private Category category;
@@ -33,12 +34,13 @@ public class Food implements Serializable {
 
     }
 
-    public Food(Integer id, String description, Integer base_qty, String base_unit, Category category) {
+    public Food(Integer id, String description, Integer base_qty, String base_unit, Category category,Attributes attributes) {
         this.id = id;
         this.description = description;
         this.base_qty = base_qty;
         this.base_unit = base_unit;
         this.category = category;
+        this.attributes = attributes;
     }
 
     public Integer getId() {
@@ -73,6 +75,7 @@ public class Food implements Serializable {
         this.base_unit = base_unit;
     }
 
+    @JsonIgnore
     public Attributes getAttributes() {
         return attributes;
     }
