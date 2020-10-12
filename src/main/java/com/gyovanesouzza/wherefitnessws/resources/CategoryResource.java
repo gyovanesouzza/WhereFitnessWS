@@ -28,12 +28,22 @@ public class CategoryResource {
         Category obj = categoryService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
-@RequestMapping(method = RequestMethod.POST)
-     public  ResponseEntity<Void> insert(@RequestBody Category category){
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> insert(@RequestBody Category category) {
         category = categoryService.insert(category);
-         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId()).toUri();
         return ResponseEntity.created(uri).build();
 
 
-     }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Category category) {
+        category.setId(id);
+        category = categoryService.update(category);
+        return ResponseEntity.noContent().build();
+
+
+    }
 }

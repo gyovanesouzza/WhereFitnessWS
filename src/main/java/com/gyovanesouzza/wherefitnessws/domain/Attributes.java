@@ -507,8 +507,9 @@ public class Attributes implements Serializable {
     public void setFattyAcids_polyunsaturatedunit(String fattyAcids_polyunsaturatedunit) {
         this.fattyAcids_polyunsaturatedunit = fattyAcids_polyunsaturatedunit;
     }
+
     @JsonIgnore
-    public Food getFood() {
+       public Food getFood() {
         return food;
     }
 

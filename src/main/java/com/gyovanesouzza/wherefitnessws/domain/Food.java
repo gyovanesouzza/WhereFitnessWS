@@ -21,20 +21,20 @@ public class Food implements Serializable {
     private Integer base_qty;
     private String base_unit;
 
-@JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attributes_id", foreignKey=@ForeignKey(name = "FK_Food_attributes"))
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "attributes_id", foreignKey = @ForeignKey(name = "FK_Food_attributes"))
     private Attributes attributes;
 
     @ManyToOne()
-    @JoinColumn(name = "category_id", foreignKey=@ForeignKey(name = "FK_Food_category"))
+    @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "FK_Food_category"))
     private Category category;
 
     public Food() {
 
     }
 
-    public Food(Integer id, String description, Integer base_qty, String base_unit, Category category,Attributes attributes) {
+    public Food(Integer id, String description, Integer base_qty, String base_unit, Category category, Attributes attributes) {
         this.id = id;
         this.description = description;
         this.base_qty = base_qty;
@@ -75,7 +75,7 @@ public class Food implements Serializable {
         this.base_unit = base_unit;
     }
 
-    @JsonIgnore
+
     public Attributes getAttributes() {
         return attributes;
     }

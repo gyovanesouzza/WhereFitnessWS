@@ -12,11 +12,12 @@ import java.util.Objects;
 @Entity
 public class Category implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String Category;
+    private String name;
 
     @JsonIgnore
     @OneToMany(mappedBy = "category")
@@ -25,9 +26,9 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    public Category(Integer id, String Category) {
+    public Category(Integer id, String name) {
         this.id = id;
-        this.Category = Category;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -38,12 +39,12 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public String getCategoria() {
-        return Category;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoria(String categoria) {
-        this.Category = Category;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @JsonIgnore
