@@ -53,9 +53,9 @@ public class WhereFitnessWsApplication implements CommandLineRunner {
                 "gramas", null, null, null, null);
 
 
-        Food f1 = new Food(null, "Arroz, integral", 100, "g", c1, att1);
-        Food f2 = new Food(null, "Arroz, Parabolizado", 100, "g", c2, att2);
-        Food f3 = new Food(null, "Arroz, fino", 100, "g", c3, att3);
+        Food f1 = new Food(null,null, "Arroz, integral", 100, "g", c1, att1);
+        Food f2 = new Food(null,null, "Arroz, Parabolizado", 100, "g", c2, att2);
+        Food f3 = new Food(null,null, "Arroz, fino", 100, "g", c3, att3);
 
         c1.getFoods().addAll(Arrays.asList(f1, f2, f3));
 

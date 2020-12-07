@@ -26,6 +26,12 @@ public class CategoryService {
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Object not found! Id: " + id + ", Type: " + getClass().getName()));
     }
+    public  Category findByname (String  name){
+        Optional<Category> obj = categoryRepository.findByName(name);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Object not found! Name: " + name + ", Type: " + getClass().getName()));
+
+    }
 
 
     public Category insert(Category category) {

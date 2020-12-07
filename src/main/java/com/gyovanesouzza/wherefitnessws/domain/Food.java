@@ -17,6 +17,7 @@ public class Food implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String brand;
     private String description;
     private Integer base_qty;
     private String base_unit;
@@ -34,13 +35,23 @@ public class Food implements Serializable {
 
     }
 
-    public Food(Integer id, String description, Integer base_qty, String base_unit, Category category, Attributes attributes) {
+    public Food(Integer id,String brand, String description, Integer base_qty, String base_unit, Category category,
+                Attributes attributes) {
         this.id = id;
+        this.brand = brand;
         this.description = description;
         this.base_qty = base_qty;
         this.base_unit = base_unit;
         this.category = category;
         this.attributes = attributes;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public Integer getId() {
