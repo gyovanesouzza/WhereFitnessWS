@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/wherefitnessws-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -Dspring.profiles.active=prod -Dserver.port=$PORT -jar target/*.jar
