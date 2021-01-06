@@ -43,4 +43,20 @@ public class FoodResource {
 
 
     }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody FoodDTO foodDTO) {
+        Food food = foodService.FromDTO(foodDTO);
+        food = foodService.update(food);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(food.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        foodService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

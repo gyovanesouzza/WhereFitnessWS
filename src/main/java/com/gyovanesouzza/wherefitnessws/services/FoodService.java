@@ -4,10 +4,12 @@ import com.gyovanesouzza.wherefitnessws.domain.Attributes;
 import com.gyovanesouzza.wherefitnessws.domain.Category;
 import com.gyovanesouzza.wherefitnessws.domain.Food;
 import com.gyovanesouzza.wherefitnessws.domain.dto.FoodDTO;
+import com.gyovanesouzza.wherefitnessws.exceptions.DataIntegrityException;
 import com.gyovanesouzza.wherefitnessws.exceptions.ObjectNotFoundException;
 import com.gyovanesouzza.wherefitnessws.repositories.AttributesRepository;
 import com.gyovanesouzza.wherefitnessws.repositories.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,15 +47,27 @@ public class FoodService {
 
     public Food insert(Food food) {
         food.setId(null);
+        food.getAttributes().setId(null);
         attributesRepository.save(food.getAttributes());
         return foodRepository.save(food);
+
+    }
+
+    public Food update(Food food) {
+
+        if (!foodRepository.findById(food.getId()).isEmpty()) {
+            attributesRepository.save(food.getAttributes());
+            return foodRepository.save(food);
+        }
+        throw new ObjectNotFoundException("Object not found! ID: " + food.getId() + ", Type: " + getClass().getName());
+
 
     }
 
     public Food FromDTO(FoodDTO foodDTO) {
         Category category = categoryService.findByname(foodDTO.getCategory());
 
-        Attributes attributes = new Attributes(null, foodDTO.getHumidity_qty(), foodDTO.getHumidity_unit(),
+        Attributes attributes = new Attributes(foodDTO.getId(), foodDTO.getHumidity_qty(), foodDTO.getHumidity_unit(),
                 foodDTO.getProtein_qty(),
                 foodDTO.getProtein_unit(), foodDTO.getLipid_qty(), foodDTO.getLipid_unit(),
                 foodDTO.getCholesterol_qty(), foodDTO.getCholesterol_unit(), foodDTO.getCarbohydrate_qty(),
@@ -74,9 +88,23 @@ public class FoodService {
                 foodDTO.getFattyAcids_polyunsaturatedunit());
 
 
-        Food food = new Food(null, foodDTO.getBrand(), foodDTO.getDescription(), foodDTO.getBase_qty(),
+        Food food = new Food(foodDTO.getId(), foodDTO.getBrand(), foodDTO.getDescription(), foodDTO.getBase_qty(),
                 foodDTO.getBase_unit(), category, attributes);
 
         return food;
+    }
+
+
+    public void delete(int id) {
+
+        findById(id);
+
+        try {
+            foodRepository.deleteById(id);
+        } catch (DataIntegrityViolationException exception) {
+            throw new DataIntegrityException("Não é possivel alimento que possui receitas");
+        }
+
+
     }
 }

@@ -3,9 +3,11 @@ package com.gyovanesouzza.wherefitnessws.services;
 
 import com.gyovanesouzza.wherefitnessws.domain.Category;
 import com.gyovanesouzza.wherefitnessws.domain.Food;
+import com.gyovanesouzza.wherefitnessws.exceptions.DataIntegrityException;
 import com.gyovanesouzza.wherefitnessws.exceptions.ObjectNotFoundException;
 import com.gyovanesouzza.wherefitnessws.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +44,19 @@ public class CategoryService {
     public Category update(Category category) {
         findById(category.getId());
         return  categoryRepository.save(category);
+    }
+
+    public void delete(Integer id) {
+
+        findById(id);
+
+        try {
+            categoryRepository.deleteById(id);
+        } catch (DataIntegrityViolationException exception) {
+            throw new DataIntegrityException("Não é possivel categoria que possui alimentos");
+        }
+
+
+
     }
 }

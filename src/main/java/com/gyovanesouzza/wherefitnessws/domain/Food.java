@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.io.Serializable;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Food implements Serializable {
@@ -21,7 +23,7 @@ public class Food implements Serializable {
     private String description;
     private Integer base_qty;
     private String base_unit;
-
+    private String barcode;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "attributes_id", foreignKey = @ForeignKey(name = "FK_Food_attributes"))
@@ -31,11 +33,18 @@ public class Food implements Serializable {
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "FK_Food_category"))
     private Category category;
 
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name="meal_food",
+            joinColumns={@JoinColumn(name="id_food")},
+            inverseJoinColumns={@JoinColumn(name="id_meal")})
+    private Set<Meal> meals = new HashSet<>();
+
+
     public Food() {
 
     }
 
-    public Food(Integer id,String brand, String description, Integer base_qty, String base_unit, Category category,
+    public Food(Integer id, String brand, String description, Integer base_qty, String base_unit, Category category,
                 Attributes attributes) {
         this.id = id;
         this.brand = brand;
@@ -45,6 +54,7 @@ public class Food implements Serializable {
         this.category = category;
         this.attributes = attributes;
     }
+
 
     public String getBrand() {
         return brand;
@@ -86,6 +96,13 @@ public class Food implements Serializable {
         this.base_unit = base_unit;
     }
 
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
 
     public Attributes getAttributes() {
         return attributes;
@@ -101,6 +118,14 @@ public class Food implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(Set<Meal> meals) {
+        this.meals = meals;
     }
 
     @Override

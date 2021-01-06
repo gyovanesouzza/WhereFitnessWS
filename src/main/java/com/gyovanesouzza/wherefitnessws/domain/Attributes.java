@@ -2,6 +2,7 @@ package com.gyovanesouzza.wherefitnessws.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,7 +15,10 @@ public class Attributes implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @SerializedName(value = "humidity/qty")
     private Double humidity_qty;
+
+    @SerializedName(value = "humidity/unit")
     private String humidity_unit;
     private Double protein_qty;
     private String protein_unit;

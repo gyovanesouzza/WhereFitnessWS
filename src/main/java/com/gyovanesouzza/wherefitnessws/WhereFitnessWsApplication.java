@@ -1,8 +1,13 @@
 package com.gyovanesouzza.wherefitnessws;
 
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedHashTreeMap;
+import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 import com.gyovanesouzza.wherefitnessws.domain.Attributes;
 import com.gyovanesouzza.wherefitnessws.domain.Category;
 import com.gyovanesouzza.wherefitnessws.domain.Food;
+import com.gyovanesouzza.wherefitnessws.htpp.Client;
 import com.gyovanesouzza.wherefitnessws.repositories.AttributesRepository;
 import com.gyovanesouzza.wherefitnessws.repositories.CategoryRepository;
 import com.gyovanesouzza.wherefitnessws.repositories.FoodRepository;
@@ -11,7 +16,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.*;
 
 @SpringBootApplication
 public class WhereFitnessWsApplication implements CommandLineRunner {
@@ -28,8 +35,48 @@ public class WhereFitnessWsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        addObjects();
     }
+
+    private void addObjectCategory() throws IOException {
+        Gson gson = new Gson();
+        Client httpClient = new Client();
+        List<Category> categories = new ArrayList<>();
+        Type listCategory = new TypeToken<List<Category>>() {
+        }.getType();
+
+        categories = gson.fromJson(httpClient.sendGET("https://taco-food-api.herokuapp" +
+                        ".com/api/v1/category",
+                "GET"), listCategory);
+
+        categoryRepository.saveAll(categories);
+    }
+
+    private void addObjectFoods() throws IOException {
+        Gson gson = new Gson();
+        Client httpClient = new Client();
+        List<Food> foods = new ArrayList<>();
+        List<Attributes> att = new ArrayList<>();
+
+        Type listFoods = new TypeToken<List<Food>>() {
+        }.getType();
+        Type objeTy = new TypeToken<List<Object>>() {
+        }.getType();
+
+        List<Object> obj = gson.fromJson(httpClient.sendGET("https://taco-food-api.herokuapp" +
+                        ".com/api/v1/food",
+                "GET"), objeTy);
+
+        LinkedTreeMap<String, HashMap<String, Object>> tt = (LinkedTreeMap<String, HashMap<String, Object>>) obj.get(2);
+        System.out.println(tt);
+        foods = gson.fromJson(httpClient.sendGET("https://taco-food-api.herokuapp" +
+                        ".com/api/v1/food",
+                "GET"), listFoods);
+
+        System.out.println();
+
+
+    }
+
 
     private void addObjects() {
         Category c1 = new Category(null, "Cereais e derivados");
@@ -53,9 +100,12 @@ public class WhereFitnessWsApplication implements CommandLineRunner {
                 "gramas", null, null, null, null);
 
 
-        Food f1 = new Food(null,null, "Arroz, integral", 100, "g", c1, att1);
-        Food f2 = new Food(null,null, "Arroz, Parabolizado", 100, "g", c2, att2);
-        Food f3 = new Food(null,null, "Arroz, fino", 100, "g", c3, att3);
+        Food f1 = new Food(null, null, "Arroz, integral", 100, "g", c1, att1);
+        f1.setBarcode("5687544567454444433");
+        Food f2 = new Food(null, null, "Arroz, Parabolizado", 100, "g", c2, att2);
+        f2.setBarcode("5687544567454444433");
+        Food f3 = new Food(null, null, "Arroz, fino", 100, "g", c3, att3);
+        f3.setBarcode("5687544567454444433");
 
         c1.getFoods().addAll(Arrays.asList(f1, f2, f3));
 

@@ -43,7 +43,13 @@ public class CategoryResource {
         category.setId(id);
         category = categoryService.update(category);
         return ResponseEntity.noContent().build();
-
-
     }
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Category> delete(@PathVariable Integer id) {
+
+        categoryService.delete(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
