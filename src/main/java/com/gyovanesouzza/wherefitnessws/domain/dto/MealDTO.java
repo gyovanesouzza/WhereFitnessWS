@@ -1,24 +1,21 @@
-package com.gyovanesouzza.wherefitnessws.domain;
+package com.gyovanesouzza.wherefitnessws.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.gson.annotations.SerializedName;
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-public class Attributes implements Serializable {
+public class MealDTO implements Serializable {
+
     private static final long serialVersionUID = 1l;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
     private Integer id;
+    private String name;
+    private Boolean visibility;
+    private String instructions;
+    private String photo;
 
-    @SerializedName(value = "humidity/qty")
     private Double humidity_qty;
-
-    @SerializedName(value = "humidity/unit")
     private String humidity_unit;
     private Double protein_qty;
     private String protein_unit;
@@ -44,6 +41,9 @@ public class Attributes implements Serializable {
     private String sodium_unit;
     private Double potassium_qty;
     private String potassium_unit;
+
+
+
     private Double thiamine_qty;
     private String thiamine_unit;
     private Double riboflavin_qty;
@@ -65,75 +65,10 @@ public class Attributes implements Serializable {
     private Double fattyAcids_polyunsaturated_qty;
     private String fattyAcids_polyunsaturatedunit;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "attributes")
-    private Food food;
+    private List<Integer> foods = new ArrayList<>();
 
-    public Attributes() {
+    public MealDTO(){
 
-    }
-
-    public Attributes(Integer id, Double humidity_qty, String humidity_unit, Double protein_qty, String protein_unit, Double lipid_qty, String lipid_unit,
-                      Double cholesterol_qty, String cholesterol_unit, Double carbohydrate_qty,
-                      String carbohydrate_unit, Double fiber_qty, String fiber_unit, Double ashes_qty,
-                      String ashes_unit, Double calcium_qty, String calcium_unit, Double magnesium_qty,
-                      String magnesium_unit, Double phosphorus_qty, String phosphorus_unit, Double iron_qty,
-                      String iron_unit, Double sodium_qty, String sodium_unit, Double potassium_qty,
-                      String potassium_unit, Double thiamine_qty, String thiamine_unit, Double riboflavin_qty,
-                      String riboflavin_unit, Double pyridoxine_qty, String pyridoxine_unit, Double niacin_qty,
-                      String niacin_unit, Double manganese_qty, String manganese_unit, Double retinol_qty,
-                      String retinol_unit, Double energy_kcal, Double energy_kj, Double fattyAcids_saturated_qty,
-                      String fattyAcids_saturated_unit, Double fattyAcids_monounsaturated_qty,
-                      String fattyAcids_monounsaturated_unit, Double fattyAcids_polyunsaturated_qty, String fattyAcids_polyunsaturatedunit) {
-
-        this.id = id;
-        this.humidity_qty = humidity_qty;
-        this.humidity_unit = humidity_unit;
-        this.protein_qty = protein_qty;
-        this.protein_unit = protein_unit;
-        this.lipid_qty = lipid_qty;
-        this.lipid_unit = lipid_unit;
-        this.cholesterol_qty = cholesterol_qty;
-        this.cholesterol_unit = cholesterol_unit;
-        this.carbohydrate_qty = carbohydrate_qty;
-        this.carbohydrate_unit = carbohydrate_unit;
-        this.fiber_qty = fiber_qty;
-        this.fiber_unit = fiber_unit;
-        this.ashes_qty = ashes_qty;
-        this.ashes_unit = ashes_unit;
-        this.calcium_qty = calcium_qty;
-        this.calcium_unit = calcium_unit;
-
-        this.magnesium_qty = magnesium_qty;
-        this.magnesium_unit = magnesium_unit;
-        this.phosphorus_qty = phosphorus_qty;
-        this.phosphorus_unit = phosphorus_unit;
-        this.iron_qty = iron_qty;
-        this.iron_unit = iron_unit;
-        this.sodium_qty = sodium_qty;
-        this.sodium_unit = sodium_unit;
-        this.potassium_qty = potassium_qty;
-        this.potassium_unit = potassium_unit;
-        this.thiamine_qty = thiamine_qty;
-        this.thiamine_unit = thiamine_unit;
-        this.riboflavin_qty = riboflavin_qty;
-        this.riboflavin_unit = riboflavin_unit;
-        this.pyridoxine_qty = pyridoxine_qty;
-        this.pyridoxine_unit = pyridoxine_unit;
-        this.niacin_qty = niacin_qty;
-        this.niacin_unit = niacin_unit;
-        this.manganese_qty = manganese_qty;
-        this.manganese_unit = manganese_unit;
-        this.retinol_qty = retinol_qty;
-        this.retinol_unit = retinol_unit;
-        this.energy_kcal = energy_kcal;
-        this.energy_kj = energy_kj;
-        this.fattyAcids_saturated_qty = fattyAcids_saturated_qty;
-        this.fattyAcids_saturated_unit = fattyAcids_saturated_unit;
-        this.fattyAcids_monounsaturated_qty = fattyAcids_monounsaturated_qty;
-        this.fattyAcids_monounsaturated_unit = fattyAcids_monounsaturated_unit;
-        this.fattyAcids_polyunsaturated_qty = fattyAcids_polyunsaturated_qty;
-        this.fattyAcids_polyunsaturatedunit = fattyAcids_polyunsaturatedunit;
     }
 
     public Integer getId() {
@@ -143,6 +78,39 @@ public class Attributes implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Boolean visibility) {
+        this.visibility = visibility;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
 
     public Double getHumidity_qty() {
         return humidity_qty;
@@ -512,79 +480,11 @@ public class Attributes implements Serializable {
         this.fattyAcids_polyunsaturatedunit = fattyAcids_polyunsaturatedunit;
     }
 
-    @JsonIgnore
-       public Food getFood() {
-        return food;
+    public List<Integer> getFoods() {
+        return foods;
     }
 
-    public void setFood(Food food) {
-        this.food = food;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Attributes that = (Attributes) o;
-        return id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Attributes{" +
-                "id=" + id +
-                ", humidity_qty=" + humidity_qty +
-                ", humidity_unit='" + humidity_unit + '\'' +
-                ", protein_qty=" + protein_qty +
-                ", protein_unit='" + protein_unit + '\'' +
-                ", lipid_qty=" + lipid_qty +
-                ", lipid_unit='" + lipid_unit + '\'' +
-                ", cholesterol_qty=" + cholesterol_qty +
-                ", cholesterol_unit='" + cholesterol_unit + '\'' +
-                ", carbohydrate_qty=" + carbohydrate_qty +
-                ", carbohydrate_unit='" + carbohydrate_unit + '\'' +
-                ", fiber_qty=" + fiber_qty +
-                ", fiber_unit='" + fiber_unit + '\'' +
-                ", ashes_qty=" + ashes_qty +
-                ", ashes_unit='" + ashes_unit + '\'' +
-                ", calcium_qty=" + calcium_qty +
-                ", calcium_unit='" + calcium_unit + '\'' +
-                ", magnesium_qty=" + magnesium_qty +
-                ", magnesium_unit='" + magnesium_unit + '\'' +
-                ", phosphorus_qty=" + phosphorus_qty +
-                ", phosphorus_unit='" + phosphorus_unit + '\'' +
-                ", iron_qty=" + iron_qty +
-                ", iron_unit='" + iron_unit + '\'' +
-                ", sodium_qty=" + sodium_qty +
-                ", sodium_unit='" + sodium_unit + '\'' +
-                ", potassium_qty=" + potassium_qty +
-                ", potassium_unit='" + potassium_unit + '\'' +
-                ", thiamine_qty=" + thiamine_qty +
-                ", thiamine_unit='" + thiamine_unit + '\'' +
-                ", riboflavin_qty=" + riboflavin_qty +
-                ", riboflavin_unit='" + riboflavin_unit + '\'' +
-                ", pyridoxine_qty=" + pyridoxine_qty +
-                ", pyridoxine_unit='" + pyridoxine_unit + '\'' +
-                ", niacin_qty=" + niacin_qty +
-                ", niacin_unit='" + niacin_unit + '\'' +
-                ", manganese_qty=" + manganese_qty +
-                ", manganese_unit='" + manganese_unit + '\'' +
-                ", retinol_qty=" + retinol_qty +
-                ", retinol_unit='" + retinol_unit + '\'' +
-                ", energy_kcal=" + energy_kcal +
-                ", energy_kj='" + energy_kj + '\'' +
-                ", fattyAcids_saturated_qty=" + fattyAcids_saturated_qty +
-                ", fattyAcids_saturated_unit='" + fattyAcids_saturated_unit + '\'' +
-                ", fattyAcids_monounsaturated_qty=" + fattyAcids_monounsaturated_qty +
-                ", fattyAcids_monounsaturated_unit='" + fattyAcids_monounsaturated_unit + '\'' +
-                ", fattyAcids_polyunsaturated_qty=" + fattyAcids_polyunsaturated_qty +
-                ", fattyAcids_polyunsaturatedunit='" + fattyAcids_polyunsaturatedunit + '\'' +
-                '}';
+    public void setFoods(List<Integer> foods) {
+        this.foods = foods;
     }
 }
-

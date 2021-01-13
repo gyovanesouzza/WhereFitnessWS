@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -14,25 +15,37 @@ public class Meal implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String name;
+    private Boolean visibility;
     private String instructions;
+    private String photo;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "attributes_id", foreignKey = @ForeignKey(name = "FK_meal_attributes"))
+    private Attribute attribute;
+
+    @ManyToMany
+    private Set<Food> foods = new HashSet<>();
+
 
     public Meal() {
 
     }
 
-    public Meal(int id, String name, String instructions) {
+    public Meal(Integer id, String name, boolean visibility, String instructions, String photo) {
         this.id = id;
         this.name = name;
+        this.visibility = visibility;
         this.instructions = instructions;
+        this.photo = photo;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,6 +57,14 @@ public class Meal implements Serializable {
         this.name = name;
     }
 
+    public Boolean isVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(Boolean visibility) {
+        this.visibility = visibility;
+    }
+
     public String getInstructions() {
         return instructions;
     }
@@ -52,5 +73,53 @@ public class Meal implements Serializable {
         this.instructions = instructions;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
 
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
+    }
+
+    public Set<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(Set<Food> foods) {
+        this.foods = foods;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Meal meal = (Meal) o;
+        return id == meal.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", visibility=" + visibility +
+                ", instructions='" + instructions + '\'' +
+                ", photo='" + photo + '\'' +
+                ", attribute=" + attribute +
+                ", foods=" + foods +
+                '}';
+    }
 }

@@ -1,16 +1,17 @@
 package com.gyovanesouzza.wherefitnessws;
 
 import com.google.gson.Gson;
-import com.google.gson.internal.LinkedHashTreeMap;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
-import com.gyovanesouzza.wherefitnessws.domain.Attributes;
+import com.gyovanesouzza.wherefitnessws.domain.Attribute;
 import com.gyovanesouzza.wherefitnessws.domain.Category;
 import com.gyovanesouzza.wherefitnessws.domain.Food;
+import com.gyovanesouzza.wherefitnessws.domain.Meal;
 import com.gyovanesouzza.wherefitnessws.htpp.Client;
 import com.gyovanesouzza.wherefitnessws.repositories.AttributesRepository;
 import com.gyovanesouzza.wherefitnessws.repositories.CategoryRepository;
 import com.gyovanesouzza.wherefitnessws.repositories.FoodRepository;
+import com.gyovanesouzza.wherefitnessws.repositories.MealRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,6 +29,9 @@ public class WhereFitnessWsApplication implements CommandLineRunner {
     private FoodRepository foodRepository;
     @Autowired
     private AttributesRepository attributesRepository;
+
+    @Autowired
+    private MealRepositories mealRepositories;
 
     public static void main(String[] args) {
         SpringApplication.run(WhereFitnessWsApplication.class, args);
@@ -55,7 +59,7 @@ public class WhereFitnessWsApplication implements CommandLineRunner {
         Gson gson = new Gson();
         Client httpClient = new Client();
         List<Food> foods = new ArrayList<>();
-        List<Attributes> att = new ArrayList<>();
+        List<Attribute> att = new ArrayList<>();
 
         Type listFoods = new TypeToken<List<Food>>() {
         }.getType();
@@ -86,15 +90,15 @@ public class WhereFitnessWsApplication implements CommandLineRunner {
         Category c5 = new Category(null, "Pescados e frutos do mar");
         Category c6 = new Category(null, "Carnes  e derivados");
 
-        Attributes att1 = new Attributes(null, 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3,
+        Attribute att1 = new Attribute(null, 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3,
                 "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas",
                 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, 5.4, 2.3,
                 "gramas", null, null, null, null);
-        Attributes att2 = new Attributes(null, 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3,
+        Attribute att2 = new Attribute(null, 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3,
                 "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas",
                 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, 5.4, 2.3,
                 "gramas", null, null, null, null);
-        Attributes att3 = new Attributes(null, 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3,
+        Attribute att3 = new Attribute(null, 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3,
                 "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas",
                 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, 5.4, 2.3,
                 "gramas", null, null, null, null);
@@ -112,5 +116,18 @@ public class WhereFitnessWsApplication implements CommandLineRunner {
         categoryRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
         attributesRepository.saveAll(Arrays.asList(att1, att2, att3));
         foodRepository.saveAll(Arrays.asList(f1, f2, f3));
+
+        Attribute att4 = new Attribute(null, 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3,
+                "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas",
+                2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, "gramas", 2.3, 5.4, 2.3,
+                "gramas", null, null, null, null);
+
+        Meal m1 = new Meal(null, "Batata cozida", true, "", null);
+        m1.setAttribute(att4);
+        m1.getFoods().addAll(Arrays.asList(f1, f3));
+
+        attributesRepository.save(att4);
+        mealRepositories.save(m1);
+
     }
 }

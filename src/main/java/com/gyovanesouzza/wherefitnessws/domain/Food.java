@@ -1,8 +1,5 @@
 package com.gyovanesouzza.wherefitnessws.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -27,17 +24,12 @@ public class Food implements Serializable {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "attributes_id", foreignKey = @ForeignKey(name = "FK_Food_attributes"))
-    private Attributes attributes;
+    private Attribute attribute;
 
     @ManyToOne()
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "FK_Food_category"))
     private Category category;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="meal_food",
-            joinColumns={@JoinColumn(name="id_food")},
-            inverseJoinColumns={@JoinColumn(name="id_meal")})
-    private Set<Meal> meals = new HashSet<>();
 
 
     public Food() {
@@ -45,14 +37,14 @@ public class Food implements Serializable {
     }
 
     public Food(Integer id, String brand, String description, Integer base_qty, String base_unit, Category category,
-                Attributes attributes) {
+                Attribute attribute) {
         this.id = id;
         this.brand = brand;
         this.description = description;
         this.base_qty = base_qty;
         this.base_unit = base_unit;
         this.category = category;
-        this.attributes = attributes;
+        this.attribute = attribute;
     }
 
 
@@ -104,12 +96,12 @@ public class Food implements Serializable {
         this.barcode = barcode;
     }
 
-    public Attributes getAttributes() {
-        return attributes;
+    public Attribute getAttribute() {
+        return attribute;
     }
 
-    public void setAttributes(Attributes attributes) {
-        this.attributes = attributes;
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
     }
 
     public Category getCategory() {
@@ -120,13 +112,6 @@ public class Food implements Serializable {
         this.category = category;
     }
 
-    public Set<Meal> getMeals() {
-        return meals;
-    }
-
-    public void setMeals(Set<Meal> meals) {
-        this.meals = meals;
-    }
 
     @Override
     public String toString() {
@@ -135,7 +120,7 @@ public class Food implements Serializable {
                 ", description='" + description + '\'' +
                 ", base_qty=" + base_qty +
                 ", base_unit='" + base_unit + '\'' +
-                ", attributes=" + attributes +
+                ", attributes=" + attribute +
                 ", categoria=" + category +
                 '}';
     }
