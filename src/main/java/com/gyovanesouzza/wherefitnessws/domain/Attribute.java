@@ -51,6 +51,8 @@ public class Attribute implements Serializable {
     private String pyridoxine_unit;
     private Double niacin_qty;
     private String niacin_unit;
+
+
     private Double manganese_qty;
     private String manganese_unit;
     private Double retinol_qty;

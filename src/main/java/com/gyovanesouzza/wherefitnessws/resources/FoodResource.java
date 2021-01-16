@@ -22,9 +22,9 @@ public class FoodResource {
         return ResponseEntity.ok().body(foodService.findAll());
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Food> findById(@PathVariable Integer id) {
-        Food obj = foodService.findById(id);
+    @RequestMapping(value = "/{foodId}", method = RequestMethod.GET)
+    public ResponseEntity<Food> findById(@PathVariable Integer foodId) {
+        Food obj = foodService.findById(foodId);
         return ResponseEntity.ok().body(obj);
     }
 
